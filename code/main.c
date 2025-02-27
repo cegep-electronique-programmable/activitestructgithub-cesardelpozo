@@ -2,12 +2,12 @@
 
   @Nom du fichier
     main.c
-
+//Ã‰dition 27 fÃ©vrier
   @Auteur
- CÉSAR ANTONIO DEL POZO CATALAN
+ CÃ‰SAR ANTONIO DEL POZO CATALAN
    
   @Sommaire
-    Programme qui écrit à l?écran I2C
+    Programme qui Ã©crit Ã  l?Ã©cran I2C
 
 */
 
@@ -16,7 +16,7 @@
 #define ADDRESSE_I2C_ECRAN  40			//0x28
 #define ADDRESSE_I2C_EEPROM 0x50        //0101 0000 car ignore le premier bit
 /*
-    Début de l'application principale
+    DÃ©but de l'application principale
  */
 void main(void)
 {
@@ -37,37 +37,37 @@ void main(void)
     
     while (1)
     {
-        /*// Code qui écrit 3 caractères sur l'écran
+        /*// Code qui Ã©crit 3 caractÃ¨res sur l'Ã©cran
         while(I2C_Open(ADDRESSE_I2C_ECRAN) == I2C_BUSY);    //Passage de l'adresse
-        I2C_SetBuffer(message, 3);                          //Passage des données
-        I2C_MasterOperation(0);                             //Démarrer une opération d'écriture
-        while (I2C_Close() == I2C_BUSY);                   	//Attendre que l'opération soit complète    
+        I2C_SetBuffer(message, 3);                          //Passage des donnÃ©es
+        I2C_MasterOperation(0);                             //DÃ©marrer une opÃ©ration d'Ã©criture
+        while (I2C_Close() == I2C_BUSY);                   	//Attendre que l'opÃ©ration soit complÃ¨te    
 
         __delay_ms(1000);*/
         
-        // Code qui lit 3 octets de la mémoire EEPROM
+        // Code qui lit 3 octets de la mÃ©moire EEPROM
        
-        // ÉCriture de deux octets de données à la EEPROM
+        // Ã‰Criture de deux octets de donnÃ©es Ã  la EEPROM
         while(I2C_Open(ADDRESSE_I2C_EEPROM) == I2C_BUSY);   //passage de l?adresse I2C
         I2C_SetBuffer(addr, 3);				//passage de l?adresse interne sur 3 octets
-        I2C_MasterOperation(0);				//opération d?écriture pour l?adresse interne
+        I2C_MasterOperation(0);				//opÃ©ration d?Ã©criture pour l?adresse interne
         while (I2C_Close() == I2C_BUSY);
         __delay_ms(5);
 
         // Lecture de 3 octets de la EEPROM
         while(I2C_Open(ADDRESSE_I2C_EEPROM) == I2C_BUSY);	//passage de l?adresse I2C
-        I2C_SetBuffer(addr, 2);			//passage du tampon et du nombre de lectures à faire
-        I2C_MasterOperation(0);		//opération de lecture
+        I2C_SetBuffer(addr, 2);			//passage du tampon et du nombre de lectures Ã  faire
+        I2C_MasterOperation(0);		//opÃ©ration de lecture
         
-        I2C_SetBuffer(read, 1);			//passage du tampon et du nombre de lectures à faire
-        I2C_MasterOperation(1);		//opération de lecture
+        I2C_SetBuffer(read, 1);			//passage du tampon et du nombre de lectures Ã  faire
+        I2C_MasterOperation(1);		//opÃ©ration de lecture
         while (I2C_Close() == I2C_BUSY);
         __delay_ms(995);
         
-        //Print dans l'écran la valeur que tu lis
+        //Print dans l'Ã©cran la valeur que tu lis
         while(I2C_Open(ADDRESSE_I2C_ECRAN) == I2C_BUSY);    //Passage de l'adresse
-        I2C_SetBuffer(read, 1);                          //Passage des données
-        I2C_MasterOperation(0);                             //Démarrer une opération d'écriture
-        while (I2C_Close() == I2C_BUSY);                   	//Attendre que l'opération soit complète  
+        I2C_SetBuffer(read, 1);                          //Passage des donnÃ©es
+        I2C_MasterOperation(0);                             //DÃ©marrer une opÃ©ration d'Ã©criture
+        while (I2C_Close() == I2C_BUSY);                   	//Attendre que l'opÃ©ration soit complÃ¨te  
     }
 }
